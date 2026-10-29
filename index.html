@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trilha da Ortografia - R, RR e Q</title>
+    <!-- Fonte Escolar/Doodle -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <header>
+            <div class="cloud-title">
+                <h1>Trilha da Ortografia</h1>
+            </div>
+            <div>
+                <div class="bncc-badge">BNCC: EF02LP03 • EF03LP01 • EF01COMP01 • EF03COMP01</div>
+            </div>
+        </header>
+
+        <nav class="nav-trail">
+            <button class="nav-btn active" onclick="switchGame(1)">R ou RR?</button>
+            <button class="nav-btn" onclick="switchGame(2)">Caça-Palavras (R)</button>
+            <button class="nav-btn" onclick="switchGame(3)">Desafio Externo</button>
+            <button class="nav-btn" onclick="switchGame(4)">Caça-Palavras (Q)</button>
+            <button class="nav-btn" onclick="switchGame(5)">Formiga das Letras</button>
+        </nav>
+
+        <!-- JOGO 1 -->
+        <div id="game1" class="game-container active">
+            <h2 class="game-title">Jogo 1: Complete com R ou RR</h2>
+            <div class="score-board">Palavra: <span id="g1-round">1</span>/10 | Pontos: <span id="g1-score">0</span></div>
+            <div id="g1-feedback" class="feedback-msg"></div>
+            <div id="g1-word" class="word-display">PI_ULITO</div>
+            <div class="options-group">
+                <button class="opt-btn" onclick="checkGame1('R')">R</button>
+                <button class="opt-btn" onclick="checkGame1('RR')">RR</button>
+            </div>
+            <button id="g1-restart" class="btn-action" style="display:none;" onclick="startGame1()">Jogar Novamente</button>
+        </div>
+
+        <!-- JOGO 2 -->
+        <div id="game2" class="game-container">
+            <h2 class="game-title">Jogo 2: Caça-Palavras da Letra R</h2>
+            <div class="difficulty-selector">
+                <span><strong>Nível:</strong></span>
+                <button class="nav-btn active" id="g2-easy" onclick="setWsDifficulty(2, 'easy')">Fácil (1 Sentido)</button>
+                <button class="nav-btn" id="g2-hard" onclick="setWsDifficulty(2, 'hard')">Difícil (Todos os Sentidos)</button>
+            </div>
+            <div id="g2-feedback" class="feedback-msg"></div>
+            <div class="ws-wrapper">
+                <div id="g2-grid" class="ws-grid"></div>
+                <div class="ws-word-list">
+                    <h3>Encontre as 9 palavras:</h3>
+                    <div id="g2-words"></div>
+                </div>
+            </div>
+            <button class="btn-action" onclick="initWordSearch(2)">Embaralhar Palavras</button>
+        </div>
+
+        <!-- JOGO 3 -->
+        <div id="game3" class="game-container">
+            <h2 class="game-title">Jogo 3: Desafio Interativo Incorporado</h2>
+            <div class="iframe-container">
+                <iframe src="https://cache-conteudoaberto.s3.amazonaws.com/file-content/M15-1-POR00-2-00-OHT-002/index.html" title="Jogo Ortografia Conteúdo Aberto"></iframe>
+            </div>
+        </div>
+
+        <!-- JOGO 4 -->
+        <div id="game4" class="game-container">
+            <h2 class="game-title">Jogo 4: Caça-Palavras da Letra Q</h2>
+            <div class="difficulty-selector">
+                <span><strong>Nível:</strong></span>
+                <button class="nav-btn active" id="g4-easy" onclick="setWsDifficulty(4, 'easy')">Fácil (1 Sentido)</button>
+                <button class="nav-btn" id="g4-hard" onclick="setWsDifficulty(4, 'hard')">Difícil (Todos os Sentidos)</button>
+            </div>
+            <div id="g4-feedback" class="feedback-msg"></div>
+            <div class="ws-wrapper">
+                <div id="g4-grid" class="ws-grid"></div>
+                <div class="ws-word-list">
+                    <h3>Encontre as 9 palavras:</h3>
+                    <div id="g4-words"></div>
+                </div>
+            </div>
+            <button class="btn-action" onclick="initWordSearch(4)">Embaralhar Palavras</button>
+        </div>
+
+        <!-- JOGO 5 -->
+        <div id="game5" class="game-container">
+            <h2 class="game-title">Jogo 5: A Formiga das Letras</h2>
+            <p style="margin-bottom:8px; font-weight:600; text-align:center;">Use as <strong>setas do teclado ou os botões</strong> para mover a Formiga (🐜) até a palavra correta!</p>
+            <div class="score-board">Desafio: <span id="g5-round">1</span>/10 | Pontuação: <span id="g5-score">0</span></div>
+            
+            <!-- MENSAGEM DE FEEDBACK NO TOPO -->
+            <div id="g5-feedback" class="feedback-msg"></div>
+            
+            <canvas id="gameCanvas" width="580" height="320"></canvas>
+            <div class="dpad">
+                <div></div>
+                <button onclick="movePlayer('Up')">▲</button>
+                <div></div>
+                <button onclick="movePlayer('Left')">◄</button>
+                <button onclick="movePlayer('Down')">▼</button>
+                <button onclick="movePlayer('Right')">►</button>
+            </div>
+            <button id="g5-restart" class="btn-action" style="display:none;" onclick="initMazeGame()">Nova Partida (Novas 10 Palavras)</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

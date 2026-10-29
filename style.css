@@ -1,0 +1,361 @@
+:root {
+    --c-blue: #A2D2FF;
+    --c-pink: #FFB7B2;
+    --c-yellow: #FFDAC1;
+    --c-green: #B5EAD7;
+    --c-purple: #E2F0CB;
+    --black: #1E1E1E;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', 'Comic Neue', cursive, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    /* Fundo Caderno Quadriculado */
+    background-color: #FAF8F5;
+    background-image: 
+        linear-gradient(#E5E0D8 1px, transparent 1px),
+        linear-gradient(90deg, #E5E0D8 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--black);
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Envelope Principal para Centralização Total */
+.app-wrapper {
+    width: 100%;
+    max-width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.cloud-title {
+    background-color: var(--c-blue);
+    border: 4px solid var(--black);
+    border-radius: 40px;
+    padding: 16px 28px;
+    box-shadow: 6px 6px 0px var(--black);
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.cloud-title h1 {
+    font-size: 2.2rem;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #FFF;
+}
+
+.bncc-badge {
+    background-color: var(--c-yellow);
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 3px 3px 0px var(--black);
+}
+
+/* Menu de Navegação */
+.nav-trail {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.nav-btn {
+    background-color: #FFF;
+    border: 3px solid var(--black);
+    color: var(--black);
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--black);
+    transition: all 0.15s ease;
+    touch-action: manipulation;
+}
+
+.nav-btn:hover, .nav-btn:active {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--black);
+}
+
+.nav-btn.active {
+    background-color: var(--c-pink);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--black);
+}
+
+/* Container do Jogo Centralizado */
+.game-container {
+    background-color: #FFFFFF;
+    border: 4px solid var(--black);
+    border-radius: 25px;
+    padding: 25px 20px;
+    width: 100%;
+    box-shadow: 8px 8px 0px var(--black);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container.active {
+    display: flex;
+}
+
+.game-title {
+    font-size: 1.7rem;
+    background-color: var(--c-green);
+    padding: 8px 22px;
+    border: 3px solid var(--black);
+    border-radius: 18px;
+    box-shadow: 3px 3px 0px var(--black);
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.btn-action {
+    background-color: var(--c-yellow);
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 12px 26px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--black);
+    transition: 0.15s;
+    margin-top: 15px;
+    touch-action: manipulation;
+}
+
+.btn-action:hover, .btn-action:active {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--black);
+}
+
+/* Jogo 1 */
+.word-display {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin: 20px 0;
+    background: #FFF8E7;
+    padding: 15px 35px;
+    border: 3px dashed var(--black);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.options-group {
+    display: flex;
+    gap: 20px;
+}
+
+.opt-btn {
+    background-color: var(--c-blue);
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 12px 35px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--black);
+    touch-action: manipulation;
+}
+
+.score-board {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: #F0F0F0;
+    padding: 6px 16px;
+    border: 2px solid var(--black);
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Jogo 2 e 4: Caça-Palavras */
+.difficulty-selector {
+    margin-bottom: 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ws-wrapper {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.ws-grid {
+    display: grid;
+    gap: 4px;
+    background-color: var(--black);
+    padding: 8px;
+    border: 3px solid var(--black);
+    border-radius: 15px;
+    box-shadow: 5px 5px 0px var(--black);
+    user-select: none;
+    touch-action: none;
+}
+
+.ws-cell {
+    width: 36px;
+    height: 36px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.ws-cell.selecting {
+    background-color: #FFE066 !important;
+}
+
+.ws-word-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+    background: #FAFAFA;
+    border: 3px solid var(--black);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 0px var(--black);
+}
+
+.ws-word-list h3 {
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 5px;
+}
+
+.ws-word-item {
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.ws-word-item.found {
+    box-shadow: 2px 2px 0px var(--black);
+    border: 1.5px solid var(--black);
+    text-decoration: line-through;
+    transform: scale(1.02);
+}
+
+/* Jogo 3 */
+.iframe-container {
+    width: 100%;
+    height: 520px;
+    border: 3px solid var(--black);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px var(--black);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Jogo 5: Formiga das Letras */
+#gameCanvas {
+    border: 4px solid var(--black);
+    border-radius: 15px;
+    background-color: #E8F4F8;
+    box-shadow: 5px 5px 0px var(--black);
+    max-width: 100%;
+    touch-action: none;
+    margin-top: 5px;
+}
+
+.dpad {
+    display: grid;
+    grid-template-columns: repeat(3, 55px);
+    grid-template-rows: repeat(2, 55px);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.dpad button {
+    background-color: var(--c-blue);
+    color: var(--black);
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--black);
+    touch-action: manipulation;
+}
+
+.dpad button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--black);
+}
+
+.feedback-msg {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 8px 0;
+    min-height: 32px;
+    text-align: center;
+}
+
+.text-success { color: #27AE60; }
+.text-danger { color: #E74C3C; }
+
+@media (max-width: 768px) {
+    .cloud-title h1 { font-size: 1.8rem; }
+    .ws-cell { width: 30px; height: 30px; font-size: 1rem; }
+    .ws-grid { gap: 3px; }
+    .iframe-container { height: 420px; }
+    .word-display { font-size: 2.3rem; padding: 10px 20px; }
+    #gameCanvas { width: 100%; height: auto; }
+}
